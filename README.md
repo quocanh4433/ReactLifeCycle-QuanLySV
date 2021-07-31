@@ -1,4 +1,4 @@
-# Bai Tap Oan Tu Xi - Redux
+# Bai Tap Oan Tu Ti - Redux
 
 # Getting Started with Create React App
 
