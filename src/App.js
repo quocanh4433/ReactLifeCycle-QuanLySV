@@ -1,11 +1,10 @@
-
 import './App.css';
-import BookingTickets from './BookingTickets/BookingTickets';
+import BaiTapOanTuTi from './BaiTapOanTuTi/BaiTapOanTuTi';
 
 function App() {
   return (
     <div>
-      <BookingTickets />
+      <BaiTapOanTuTi/>
     </div>
   );
 }
