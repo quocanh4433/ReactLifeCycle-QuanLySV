@@ -20,18 +20,40 @@ class Player extends Component {
     }
     renderHinhAnhDatCuoc = () => {
         let {mangDatCuoc} = this.props
-        return mangDatCuoc.find( item => item.datCuoc === true )
+        return mangDatCuoc.find( item => item.datCuoc === true ).hinhAnh
+    }
+
+    renderNhanVatChon = () => {
+        let {mangNhaVat} = this.props
+        return mangNhaVat.find( item => item.isChoose === true).hinhAnh
+    }
+
+    renderStoneAvenger = () => {
+        let {arrStoneAvenger} = this.props
+        if (arrStoneAvenger.length !== 0 ){
+            return arrStoneAvenger.map((item, index)=>{
+                return  <div className="col-2" key={index}>
+                    <img className="stoneAvengers" src={item.hinhAnh} alt="..." />
+                </div>
+            })
+        }
     }
     render() {
         return (
             <div>
                 <div className="theThink">
-                    <img src={this.renderHinhAnhDatCuoc().hinhAnh} style={{ width: "100px", transform: "rotate(120deg)" }} alt="..." />
+                    <img src={this.renderHinhAnhDatCuoc()} alt="..." />
                 </div>
                 <div className="speech-bubble"></div>
-                <img src="./img/player.png" style={{width: "200px"}} alt="..." />
+                <div>
+                    <img src={this.renderNhanVatChon()} className="avengers" alt="..." />
+                </div>
                 <div className="row">
                     {this.renderMangDatCuoc()}
+                </div>
+                <h3 className="title">ĐÁ VÔ CỰC</h3>
+                <div className="stone row mb-2">
+                    {this.renderStoneAvenger()}
                 </div>
             </div>
         )
@@ -40,7 +62,9 @@ class Player extends Component {
 
 const mapStateToProps = (state) => {
     return  {
-        mangDatCuoc: state.BaiTapOanTuTiReducer.mangDatCuoc
+        mangDatCuoc: state.BaiTapOanTuTiReducer.mangDatCuoc,
+        mangNhaVat: state.BaiTapOanTuTiReducer.mangNhanVat,
+        arrStoneAvenger: state.BaiTapOanTuTiReducer.arrStoneAvenger
     }
 }
 
@@ -51,7 +75,7 @@ const mapDispatchToProps = (dispatch) => {
                 type: "CHON_KEO_BUA_BAO",
                 maCuoc
             })
-        }
+        },
     }
     
 }

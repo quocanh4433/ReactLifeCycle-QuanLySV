@@ -1,21 +1,36 @@
+* {
+    font-family: 'Bahianita', cursive;
+}
+
+button:focus{
+    outline: none;
+}
+
+.playgame {
+    font-size: 30px;
+    letter-spacing: 3px;
+}
+
 .bg-game {
-    background-image: url(../../img/bgGame.png);
+    background-image: url(../../img/bgGame02.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+    overflow: auto;
 
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
+    padding: 10px 0;
 }
 
 .theThink {
     margin: 0 auto;
-    width: 170px;
-    height: 150px;
-    border: 5px solid #f3afaf;
+    width: 150px;
+    height: 100px;
+    border: 5px solid orange;
     border-radius: 10px;
     background-color: #fff;
     display: flex;
@@ -25,38 +40,47 @@
     overflow: hidden;
 }
 
-.theThink > .img-computer {
+.theThink > img  {
     position: absolute;
     left: 50%;
     width: 100px;
     transform:  translateX(-50%) rotate(120deg);
+    width: 70px;
 }
-
 
 .speech-bubble {
 	position: relative;
-	background: #f3afaf;
-	border-radius: .4em;
+	background: orange;
+    z-index: 1;
 }
-
 .speech-bubble:after {
 	content: '';
-	position: absolute;
-	bottom: 0;
-	left: 50%;
-	width: 0;
-	height: 0;
-	border: 31px solid transparent;
-	border-top-color: #f3afaf;
-	border-bottom: 0;
-	border-left: 0;
-	margin-left: -15.5px;
-	margin-bottom: -31px;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border: 18px solid transparent;
+    border-top-color: orange;
+    border-bottom: 0;
+    border-left: 0;
+    margin-left: -10.5px;
+    margin-bottom: -16px;
+}
+
+.thanos {
+    width: 200px;
+}
+
+.avengers {
+    width: 70%;
+    height: 250px;
+    object-fit: cover;
 }
 
 .btnItem{
-    width: 60px;
-    height: 60px;
+    width: 55px;
+    height: 55px;
     background-color: #fff;
     border: 4px solid #fff;
     border-radius: 8px; 
@@ -64,4 +88,46 @@
 
 .btnItem img {
     width: 100%;
+}
+
+.btn-chonNhanVat {
+    padding: 0px; 
+    outline: none;
+    margin: 0 2px 5px 2px;
+}
+
+.avaterNhanVat {
+    width: 42px;
+    height: 42px;
+    object-fit: cover;
+}
+
+.chonhNhanVat {
+    display: flex; 
+    margin: 0 auto;
+    width: 40%; 
+    flex-wrap: wrap
+}
+
+.stone {
+    min-height: 30px;
+}
+
+.stone img {
+    filter: contrast(150%);
+}
+
+.stoneAvengers, .stoneThanos{
+    width: 20px;
+    height: 30px;
+    object-fit: cover;
+}
+
+.title {
+    margin: 5px 0;
+    text-align: center;
+}
+
+.title-thanos{
+    margin: 38px 0 5px 0 !important;
 }

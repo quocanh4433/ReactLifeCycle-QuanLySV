@@ -6,6 +6,29 @@ import Result from './Result'
 import { connect  } from 'react-redux'
 
 class BaiTapOanTuTi extends Component {
+    renderNhanVat = () => {
+        let {mangNhanVat, chonNhaVat} = this.props
+        return mangNhanVat.map((item, index) => {
+            let border = "4px solid #fff"
+            if (item.isChoose) {
+                border = "4px solid orange"
+            }
+            return <button className="btn-chonNhanVat" key={index} style={{border: `${border}`}} onClick={()=>{
+                chonNhaVat(item.ma)
+            }}>
+                <img src={item.avatar} className="avaterNhanVat" alt="..."/>
+            </button>
+        })
+    }
+
+    renderStone = () => {
+        let {arrStone} = this.props
+        return arrStone.map((item, index)=>{
+            return  <div className="col-2" key={index}>
+                <img src={item.hinhAnh} style={{width: "20px", height: "30px", objectFit:"cover" }}  alt="..." />
+            </div>
+        })
+    }
     render() {
         return (
             <section className="bg-game">
@@ -14,14 +37,23 @@ class BaiTapOanTuTi extends Component {
                         <div className="col-3">
                             <Player/>
                         </div>
-                        <div className="col-6">
+                        <div className="col-6 mt-5">
                             <Result/>
-                            <button className="btn btn-success" onClick={ () => {
+                            <button className="btn btn-success playgame" onClick={ () => {
                                 this.props.playGame()
                             }}>PLAY GAME</button>
+                            <div className="stone row" style={{width: "70%", margin: "20px auto"}}>
+                                {this.renderStone()}
+                            </div>
                         </div>
                         <div className="col-3">
                             <Computer />
+                        </div>
+                    </div>
+                    <div>
+                        <h3 className="text-white text-center">CHỌN NHÂN VẬT</h3>
+                        <div className="chonhNhanVat" >
+                            {this.renderNhanVat()}
                         </div>
                     </div>
                 </div>
@@ -45,13 +77,24 @@ const mapDispatchToProps = (dispatch) => {
                     clearInterval(randomComputerItem)
                     dispatch ({
                         type: "END_GAME"
-                        
                     }) 
                 }
             }, 100)
-            
+        },
+        chonNhaVat: (maNhanVat) => {
+            dispatch ({
+                type: "CHON_NHAN_VAT",
+                maNhanVat
+            })
         }
     }
 }
 
-export default connect(null, mapDispatchToProps)(BaiTapOanTuTi)
+const mapStateToProps = (state) => {
+    return  {
+        mangNhanVat: state.BaiTapOanTuTiReducer.mangNhanVat,
+        arrStone: state.BaiTapOanTuTiReducer.arrStone,
+    }
+} 
+
+export default connect(mapStateToProps, mapDispatchToProps)(BaiTapOanTuTi)
