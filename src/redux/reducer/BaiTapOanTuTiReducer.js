@@ -168,5 +168,4 @@ const BaiTapOanTuTiReducer = (state = stateDefault, action) => {
         default: return {...state}
     }
 }
-
 export default BaiTapOanTuTiReducer

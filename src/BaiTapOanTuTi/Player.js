@@ -1,5 +1,6 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { datCuocAction } from '../redux/action/BaiTapOanTuTiAction';
 
 class Player extends Component {
     renderMangDatCuoc = () => {
@@ -10,9 +11,7 @@ class Player extends Component {
                 border = {border: '5px solid orange'}
             }
             return <div className="col-4" key={index} >
-                <button className="btnItem" style={border} onClick={()=>{
-                    datCuoc(item.ma)
-                }}>
+                <button className="btnItem" style={border} onClick={()=>{datCuoc(item.ma)}}>
                     <img src={item.hinhAnh} alt=".."/> 
                 </button>
             </div>
@@ -20,12 +19,12 @@ class Player extends Component {
     }
     renderHinhAnhDatCuoc = () => {
         let {mangDatCuoc} = this.props
-        return mangDatCuoc.find( item => item.datCuoc === true ).hinhAnh
+        return mangDatCuoc.find(item => item.datCuoc === true).hinhAnh
     }
 
     renderNhanVatChon = () => {
         let {mangNhaVat} = this.props
-        return mangNhaVat.find( item => item.isChoose === true).hinhAnh
+        return mangNhaVat.find(item => item.isChoose === true).hinhAnh
     }
 
     renderStoneAvenger = () => {
@@ -71,13 +70,9 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         datCuoc: (maCuoc) => {
-            dispatch ({
-                type: "CHON_KEO_BUA_BAO",
-                maCuoc
-            })
+            dispatch (datCuocAction(maCuoc))
         },
     }
-    
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Player)

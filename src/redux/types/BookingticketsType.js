@@ -1,2 +1,0 @@
-export const BOOKING_TICKETS = 'BOOKING_TICKETS';
-export const CANCLE_TICKETS = 'CANCLE_TICKETS';
